@@ -1,6 +1,9 @@
 package quizlet;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+
+import database.Storable;
 
 public class Quiz implements Storable {
 	private ArrayList<Question> allQuestions;
@@ -8,8 +11,9 @@ public class Quiz implements Storable {
 	private int timesTaken;
 	//public so can be updated outside the class
 	//(this is assuming we don't make the QuizHistory method it's own thing)
-	public ArrayList<Performance> history;
-	public Map<Profile, Int> allRatings;
+	
+	//TODO public ArrayList<Performance> history;
+	public Map<Profile, Integer> allRatings;
 	public Map<Profile, String> allReviews;
 
 	public Quiz() {
@@ -22,9 +26,6 @@ public class Quiz implements Storable {
 		allReviews = new Map<Profile, String>();
 	}
 	
-	/**
-	 * Do something with the Storable interface...?
-	 */
 	
 	private long creationTime(){
 		return creation;
@@ -91,6 +92,12 @@ public class Quiz implements Storable {
 	//in order for this to work must update this outside the class (quiz.allReviews.put(...) etc)
 	private Map<Profile, String> review(){
 		return allReviews;
+	}
+
+	@Override
+	public String toSQL() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
